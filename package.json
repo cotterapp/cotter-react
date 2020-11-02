@@ -1,0 +1,55 @@
+{
+  "name": "cotter-react",
+  "version": "0.0.1-beta.0",
+  "description": "Cotter's React JS SDK - Add Login and Authentication State Management to your React site",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "prepublish": "npm run build",
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cotterapp/cotter-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [
+    "login",
+    "authentication",
+    "signup",
+    "form",
+    "register",
+    "email",
+    "verification",
+    "phone"
+  ],
+  "bugs": {
+    "url": "https://github.com/cotterapp/cotter-react/issues"
+  },
+  "homepage": "https://github.com/cotterapp/cotter-react#readme",
+  "dependencies": {
+    "cotter": "^0.3.22"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.51",
+    "@types/react-dom": "^16.9.8",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rollup": "^2.28.2",
+    "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-typescript2": "^0.27.3",
+    "typescript": "^4.0.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "files": [
+    "dist"
+  ]
+}

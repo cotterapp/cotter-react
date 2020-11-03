@@ -12,7 +12,7 @@ export interface CotterContextInterface {
     getCotter?: (config?: Config) => Cotter;
     user?: User;
     apiKeyID: string;
-    logout: (logoutPath?: String) => Promise<void>;
+    logout: () => Promise<void>;
     checkLoggedIn: () => Promise<void>;
     getAccessToken: () => Promise<CotterAccessToken | null>;
 }

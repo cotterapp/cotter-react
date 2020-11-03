@@ -4,6 +4,7 @@
 As you can see, we've already included [`CotterProvider`](https://github.com/cotter-code/react-starter-app/blob/master/src/pages/_app/index.js#L13) for authentication state management. It's already included in `pages/_app` to wrap over your root component.
 - [Adding the `LoginForm`](#adding-the-loginform)
 - [Using the `CotterProvider`](#using-the-cotterprovider)
+- [Require authentication using `withAuthenticationRequired`](#require-authentication-using-withAuthenticationRequired)
 
 ### Adding the `LoginForm`
 The `LoginForm` component automatically sends a verification email or SMS to the entered email or phone number, and respond with the results.
@@ -193,4 +194,17 @@ const accessTokenStr = token?.token;
 - **`apiKeyID`** (string): your API KEY ID that you passed-in to the `CotterProvider`
 - **`checkLoggedIn`** (async function): a function to force the `CotterProvider` to check if the user's logged-in
 
+### Require Authentication using `withAuthenticationRequired`
+This wrapper will check if the user is logged-in, if not, it'll redirect to the `loginPagePath`
+```javascript
+import { withAuthenticationRequired } from "cotter-react";
+
+function DashboardPage() {...}
+
+// Protect this page using the `withAuthenticationRequired` HOC
+// If user is not logged-in, they'll be redirected to the `loginPagePath`
+export default withAuthenticationRequired(DashboardPage, {
+  loginPagePath: "/",
+});
+```
 

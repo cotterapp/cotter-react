@@ -1,7 +1,43 @@
 # cotter-react
 
+## Installation
+
+```bash
+yarn add cotter-react
+
+#or
+
+npm install cotter-react --save
+```
+
+## Get Started
+
+To use the `CotterProvider`, you need to wrap your root component with `CotterProvder`.
+
+### Wrap your Root Component with `CotterProvider`
+
+```javascript
+import React from "react";
+import { Router } from "@reach/router";
+import LoginPage from "../login";
+import { CotterProvider, LoginForm } from "cotter-react"; // 👈  Import Cotter Provider
+
+function App() {
+  return (
+    // 👇 1) Wrap CotterProvider around your ROOT COMPONENT
+    <CotterProvider apiKeyID="<YOUR API KEY ID>">  // 👈  Copy paste your Cotter API Key ID.
+      <Router>
+        <LoginPage path="/" />
+      </Router>
+    </CotterProvider>
+  );
+}
+
+export default App;
+```
+
 ## Available Functions
-As you can see, we've already included [`CotterProvider`](https://github.com/cotter-code/react-starter-app/blob/master/src/pages/_app/index.js#L13) for authentication state management. It's already included in `pages/_app` to wrap over your root component.
+Using the React SDK, we have included [`CotterProvider`](https://github.com/cotter-code/react-starter-app/blob/master/src/pages/_app/index.js#L13) for authentication state management.
 - [Adding the `LoginForm`](#adding-the-loginform)
 - [Using the `CotterProvider`](#using-the-cotterprovider)
 - [Require authentication using `withAuthenticationRequired`](#require-authentication-using-withAuthenticationRequired)

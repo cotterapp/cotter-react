@@ -425,10 +425,10 @@ cotter-token-js@^0.1.5:
     jwk-to-pem "^2.0.3"
     tweetnacl "^1.0.3"
 
-cotter@^0.3.22:
-  version "0.3.22"
-  resolved "https://registry.yarnpkg.com/cotter/-/cotter-0.3.22.tgz#4d3696c840e883a184dde1d6312ed43a23c13846"
-  integrity sha512-2bhPCRN13DVmAHZpofQzgIl8NkxglbRWF24mtVG5JwAXQtybVM0r1WOcfGD1p5Ubki4Sk++6NrJ/bbAG60bmPQ==
+cotter@0.3.24-beta.0:
+  version "0.3.24-beta.0"
+  resolved "https://registry.yarnpkg.com/cotter/-/cotter-0.3.24-beta.0.tgz#fc8867e96cdcb08240aedea67c582f210bcfe88e"
+  integrity sha512-Gm7xdnrsCa2MwCdMr0yN0QP1XKZl7K3cy5hZLh3zjfXDhDR8yzwTLI+qOJB9yNgzX3xQc/8OWJl2fyQF48718Q==
   dependencies:
     axios "^0.20.0"
     cotter-token-js "^0.1.5"

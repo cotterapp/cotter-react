@@ -11,6 +11,7 @@ interface LoginFormOptions {
     additionalFields?: AdditionalField[];
     width: number;
     height: number;
+    formID?: string;
 }
 /**
  * ```jsx
@@ -32,12 +33,13 @@ interface LoginFormOptions {
  *    ]}
  *    width={300}
  *    height={300}
+ *    formID="default"
  * />;
  * ```
  *
  * Initiate Cotter's login form
  **/
-declare function LoginForm({ onBegin, onSuccess, onError, styles, additionalFields, type, authMethod, width, height, }: LoginFormOptions): JSX.Element;
+declare function LoginForm({ onBegin, onSuccess, onError, styles, additionalFields, formID, type, authMethod, width, height, }: LoginFormOptions): JSX.Element;
 declare namespace LoginForm {
     var propTypes: {
         onSuccess: PropTypes.Validator<(...args: any[]) => any>;

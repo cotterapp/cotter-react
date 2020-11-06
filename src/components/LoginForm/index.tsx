@@ -21,6 +21,7 @@ interface LoginFormOptions {
   additionalFields?: AdditionalField[];
   width: number;
   height: number;
+  formID?: string; // For customization
 }
 
 /**
@@ -43,6 +44,7 @@ interface LoginFormOptions {
  *    ]}
  *    width={300}
  *    height={300}
+ *    formID="default"
  * />;
  * ```
  *
@@ -55,6 +57,7 @@ function LoginForm({
   onError,
   styles,
   additionalFields,
+  formID,
   type = IDENTIFIER_TYPE.EMAIL,
   authMethod = AUTHENTICATION_METHOD.MAGIC_LINK,
   width = 300,
@@ -82,6 +85,9 @@ function LoginForm({
       }
       if (additionalFields && additionalFields.length > 0) {
         config.AdditionalFields = additionalFields;
+      }
+      if (formID && formID.length > 0)  {
+        config.FormID = formID;
       }
       config.ContainerID = containerID;
       console.log(config);

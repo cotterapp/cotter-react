@@ -16,7 +16,7 @@ To use the `CotterProvider`, you need to wrap your root component with `CotterPr
 
 ### Wrap your Root Component with `CotterProvider`
 
-```javascript
+```jsx
 import React from "react";
 import { Router } from "@reach/router";
 import LoginPage from "../login";
@@ -34,6 +34,21 @@ function App() {
 }
 
 export default App;
+```
+
+### Using Gatsby
+[How to add Context Provider in Gatsby](https://www.gatsbyjs.com/blog/2019-01-31-using-react-context-api-with-gatsby/#modifying-the-gatsby-browser-file)
+
+Update your `gatsby-browser.js` file in the root folder of your project
+
+```jsx
+import React from "react"
+import { CotterProvider } from "cotter-react"
+export const wrapRootElement = ({ element }) => (
+  <CotterProvider apiKeyID="<YOUR API KEY ID>">
+    {element}
+  </CotterProvider>
+)
 ```
 
 ## Available Functions

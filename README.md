@@ -9,6 +9,8 @@ yarn add cotter-react
 
 npm install cotter-react --save
 ```
+## Example
+Play around in this [Codesandbox](https://codesandbox.io/s/cotter-react-complete-yk1h8?file=/src/App.js).
 
 ## Get Started
 
@@ -215,7 +217,7 @@ const styles = {
 ### Using the `CotterProvider`
 The `CotterProvider` provides you with useful authentication state and the current user information. To use it:
 ```javascript
-const { isLoading, isLoggedIn, user, logout, getCotter, apiKeyID, checkLoggedIn } = useContext(CotterContext);
+const { isLoading, isLoggedIn, user, getAccessToken, logout, getCotter, apiKeyID, checkLoggedIn } = useContext(CotterContext);
 ```
 
 - **`isLoading`** (bool): tells you if the CotterProvider is loading the necessary data

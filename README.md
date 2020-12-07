@@ -1,5 +1,7 @@
 # cotter-react
 
+[![npm version](https://badge.fury.io/js/cotter-react.svg)](https://badge.fury.io/js/cotter-react)
+
 ## Installation
 
 ```bash

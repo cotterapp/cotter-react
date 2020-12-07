@@ -6,6 +6,12 @@ export interface CotterProviderOptions extends Config {
      */
     children?: React.ReactNode;
     apiKeyID: string;
+    /**
+     * Updates CotterEnum base urls if needed
+     */
+    backendURL?: string;
+    jsURL?: string;
+    assetURL?: string;
 }
 /**
  * ```jsx

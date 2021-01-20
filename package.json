@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/cotterapp/cotter-react#readme",
   "dependencies": {
-    "cotter": "^0.3.22"
+    "cotter": "^0.3.29"
   },
   "devDependencies": {
     "@types/react": "^16.9.51",

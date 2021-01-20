@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 import { Config } from "cotter/lib/binder";
-export interface CotterProviderOptions extends Config {
+export interface CotterProviderOptions extends Partial<Config> {
     /**
      * The child nodes your Provider has wrapped
      */

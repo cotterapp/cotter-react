@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from "react";
 import Cotter, { CotterEnum } from "cotter";
 import { Config } from "cotter/lib/binder";
 import User from "cotter/lib/models/User";
 import CotterContext from "./userContext";
 import { CotterAccessToken } from "cotter-token-js";
 
-export interface CotterProviderOptions extends Config {
+export interface CotterProviderOptions extends Partial<Config> {
   /**
    * The child nodes your Provider has wrapped
    */
@@ -69,7 +69,6 @@ const CotterProvider = (opts: CotterProviderOptions) => {
       CotterEnum.AssetURL = assetURL;
     }
   }, [assetURL]);
-
 
   const checkLoggedIn = async () => {
     const cotter = getCotter();

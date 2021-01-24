@@ -17,7 +17,7 @@ interface LoginFormOptions {
   onSuccess: (response: VerifySuccess) => void;
   onError: (err: any) => void;
   onBegin?: OnBeginHandler;
-  styles?: Styles;
+  styles?: Partial<Styles>;
   additionalFields?: AdditionalField[];
   width: number;
   height: number;
@@ -78,7 +78,7 @@ function LoginForm({
         Type: type,
       };
       if (styles) {
-        config.Styles = styles;
+        config.Styles = styles as Styles;
       }
       if (additionalFields && additionalFields.length > 0) {
         config.AdditionalFields = additionalFields;

@@ -1,6 +1,6 @@
 {
   "name": "cotter-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Cotter's React JS SDK - Add Login and Authentication State Management to your React site",
   "main": "dist/index.js",
   "scripts": {

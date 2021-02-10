@@ -86,23 +86,23 @@ function LoginForm({
       if (additionalFields && additionalFields.length > 0) {
         config.AdditionalFields = additionalFields;
       }
-      if (formID && formID.length > 0)  {
-        config.FormID = formID;
-      }
       config.ContainerID = containerID;
-      console.log(config);
       const cotter = getCotter(config);
+      let cotterForm = cotter;
+      if (formID && formID.length > 0) {
+        cotterForm = cotter.withFormID(formID);
+      }
 
       let cotterMethod =
         authMethod === AUTHENTICATION_METHOD.MAGIC_LINK
-          ? cotter.signInWithLink()
-          : cotter.signInWithOTP();
+          ? cotterForm.signInWithLink()
+          : cotterForm.signInWithOTP();
 
       if (onBegin) {
         cotterMethod =
           authMethod === AUTHENTICATION_METHOD.MAGIC_LINK
-            ? cotter.signInWithLink(onBegin)
-            : cotter.signInWithOTP(onBegin);
+            ? cotterForm.signInWithLink(onBegin)
+            : cotterForm.signInWithOTP(onBegin);
       }
 
       const cotterType =

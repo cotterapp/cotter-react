@@ -124,7 +124,7 @@ var CotterContext = React.createContext(initialContext);
  * Provides the CotterContext to its child components.
  */
 var CotterProvider = function (opts) {
-    var children = opts.children, apiKeyID = opts.apiKeyID;
+    var children = opts.children, apiKeyID = opts.apiKeyID, backendURL = opts.backendURL, jsURL = opts.jsURL, assetURL = opts.assetURL;
     var _a = React.useState(false), loggedIn = _a[0], setloggedIn = _a[1];
     var _b = React.useState(true), loading = _b[0], setloading = _b[1];
     var _c = React.useState(undefined), user = _c[0], setuser = _c[1];
@@ -143,6 +143,22 @@ var CotterProvider = function (opts) {
             checkLoggedIn();
         }
     }, [apiKeyID]);
+    // Update base url if needed
+    React.useEffect(function () {
+        if (backendURL) {
+            Cotter.CotterEnum.BackendURL = backendURL;
+        }
+    }, [backendURL]);
+    React.useEffect(function () {
+        if (jsURL) {
+            Cotter.CotterEnum.JSURL = jsURL;
+        }
+    }, [jsURL]);
+    React.useEffect(function () {
+        if (assetURL) {
+            Cotter.CotterEnum.AssetURL = assetURL;
+        }
+    }, [assetURL]);
     var checkLoggedIn = function () { return __awaiter(void 0, void 0, void 0, function () {
         var cotter, accessToken, usr;
         var _a;

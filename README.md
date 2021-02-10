@@ -1,5 +1,7 @@
 # cotter-react
 
+[![npm version](https://badge.fury.io/js/cotter-react.svg)](https://badge.fury.io/js/cotter-react)
+
 ## Installation
 
 ```bash
@@ -9,6 +11,8 @@ yarn add cotter-react
 
 npm install cotter-react --save
 ```
+## Example
+Play around in this [Codesandbox](https://codesandbox.io/s/cotter-react-complete-yk1h8?file=/src/App.js).
 
 ## Get Started
 
@@ -16,7 +20,7 @@ To use the `CotterProvider`, you need to wrap your root component with `CotterPr
 
 ### Wrap your Root Component with `CotterProvider`
 
-```javascript
+```jsx
 import React from "react";
 import { Router } from "@reach/router";
 import LoginPage from "../login";
@@ -34,6 +38,21 @@ function App() {
 }
 
 export default App;
+```
+
+### Using Gatsby
+[How to add Context Provider in Gatsby](https://www.gatsbyjs.com/blog/2019-01-31-using-react-context-api-with-gatsby/#modifying-the-gatsby-browser-file)
+
+Update your `gatsby-browser.js` file in the root folder of your project
+
+```jsx
+import React from "react"
+import { CotterProvider } from "cotter-react"
+export const wrapRootElement = ({ element }) => (
+  <CotterProvider apiKeyID="<YOUR API KEY ID>">
+    {element}
+  </CotterProvider>
+)
 ```
 
 ## Available Functions
@@ -200,7 +219,7 @@ const styles = {
 ### Using the `CotterProvider`
 The `CotterProvider` provides you with useful authentication state and the current user information. To use it:
 ```javascript
-const { isLoading, isLoggedIn, user, logout, getCotter, apiKeyID, checkLoggedIn } = useContext(CotterContext);
+const { isLoading, isLoggedIn, user, getAccessToken, logout, getCotter, apiKeyID, checkLoggedIn } = useContext(CotterContext);
 ```
 
 - **`isLoading`** (bool): tells you if the CotterProvider is loading the necessary data

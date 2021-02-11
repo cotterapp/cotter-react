@@ -270,13 +270,14 @@ var withAuthenticationRequired = function (Component, options) { return function
  *    ]}
  *    width={300}
  *    height={300}
+ *    formID="default"
  * />;
  * ```
  *
  * Initiate Cotter's login form
  **/
 function LoginForm(_a) {
-    var onBegin = _a.onBegin, onSuccess = _a.onSuccess, onError = _a.onError, styles = _a.styles, additionalFields = _a.additionalFields, _b = _a.type, type = _b === void 0 ? binder.IDENTIFIER_TYPE.EMAIL : _b, _c = _a.authMethod, authMethod = _c === void 0 ? binder.AUTHENTICATION_METHOD.MAGIC_LINK : _c, _d = _a.width, width = _d === void 0 ? 300 : _d, _e = _a.height, height = _e === void 0 ? 300 : _e;
+    var onBegin = _a.onBegin, onSuccess = _a.onSuccess, onError = _a.onError, styles = _a.styles, additionalFields = _a.additionalFields, formID = _a.formID, _b = _a.type, type = _b === void 0 ? binder.IDENTIFIER_TYPE.EMAIL : _b, _c = _a.authMethod, authMethod = _c === void 0 ? binder.AUTHENTICATION_METHOD.MAGIC_LINK : _c, _d = _a.width, width = _d === void 0 ? 300 : _d, _e = _a.height, height = _e === void 0 ? 300 : _e;
     var _f = React.useState(false), loaded = _f[0], setloaded = _f[1];
     var _g = React.useState(""), containerID = _g[0], setcontainerID = _g[1];
     var _h = React.useContext(CotterContext), getCotter = _h.getCotter, apiKeyID = _h.apiKeyID, checkLoggedIn = _h.checkLoggedIn;
@@ -296,6 +297,9 @@ function LoginForm(_a) {
             }
             if (additionalFields && additionalFields.length > 0) {
                 config.AdditionalFields = additionalFields;
+            }
+            if (formID && formID.length > 0) {
+                config.FormID = formID;
             }
             config.ContainerID = containerID;
             console.log(config);

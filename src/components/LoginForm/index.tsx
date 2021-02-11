@@ -21,6 +21,7 @@ interface LoginFormOptions {
   additionalFields?: AdditionalField[];
   width: number;
   height: number;
+  formID?: string; // For customization
 }
 
 /**
@@ -43,6 +44,7 @@ interface LoginFormOptions {
  *    ]}
  *    width={300}
  *    height={300}
+ *    formID="default"
  * />;
  * ```
  *
@@ -55,6 +57,7 @@ function LoginForm({
   onError,
   styles,
   additionalFields,
+  formID,
   type = IDENTIFIER_TYPE.EMAIL,
   authMethod = AUTHENTICATION_METHOD.MAGIC_LINK,
   width = 300,
@@ -84,19 +87,22 @@ function LoginForm({
         config.AdditionalFields = additionalFields;
       }
       config.ContainerID = containerID;
-      console.log(config);
       const cotter = getCotter(config);
+      let cotterForm = cotter;
+      if (formID && formID.length > 0) {
+        cotterForm = cotter.withFormID(formID);
+      }
 
       let cotterMethod =
         authMethod === AUTHENTICATION_METHOD.MAGIC_LINK
-          ? cotter.signInWithLink()
-          : cotter.signInWithOTP();
+          ? cotterForm.signInWithLink()
+          : cotterForm.signInWithOTP();
 
       if (onBegin) {
         cotterMethod =
           authMethod === AUTHENTICATION_METHOD.MAGIC_LINK
-            ? cotter.signInWithLink(onBegin)
-            : cotter.signInWithOTP(onBegin);
+            ? cotterForm.signInWithLink(onBegin)
+            : cotterForm.signInWithOTP(onBegin);
       }
 
       const cotterType =

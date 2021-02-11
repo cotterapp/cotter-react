@@ -1,6 +1,6 @@
 {
   "name": "cotter-react",
-  "version": "0.0.4",
+  "version": "0.0.5-beta.0",
   "description": "Cotter's React JS SDK - Add Login and Authentication State Management to your React site",
   "main": "dist/index.js",
   "scripts": {
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/cotterapp/cotter-react#readme",
   "dependencies": {
-    "cotter": "^0.3.29"
+    "cotter": "^0.3.31"
   },
   "devDependencies": {
     "@types/react": "^16.9.51",

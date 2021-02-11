@@ -44,7 +44,7 @@ interface LoginFormOptions {
  *    ]}
  *    width={300}
  *    height={300}
- *    formID="default"
+ *    formID="form_default"
  * />;
  * ```
  *

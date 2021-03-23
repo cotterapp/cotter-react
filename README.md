@@ -67,6 +67,7 @@ The `LoginForm` component automatically sends a verification email or SMS to the
 To use the `LoginForm` component, you can import `LoginForm` and do the following:
 ```javascript
 <LoginForm
+  formID={"form_default"}         // - Select which form customization to use (check your dashboard)
   type="EMAIL"                    // - EMAIL or PHONE
   authMethod="MAGIC_LINK"         // - OTP or MAGIC_LINK
   onBegin={onSignupBegin}         // - A function that runs before verification email/SMS is sent

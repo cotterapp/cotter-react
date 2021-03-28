@@ -143,16 +143,18 @@ function LoginForm({
   return (
     <>
       
-      <div
-        id={containerID}
-        style={{ width: width, height: height }}
-      >
-        {(contextLoaded && (!apiKeyID || apiKeyID.length < 36)) && (
-          <div style={{ padding: "0px 20px" }}>
-            You're missing the API KEY ID, you need to pass it to{" "}
-            <code>CotterProvider</code>
+      {(contextLoaded && (!apiKeyID || apiKeyID.length < 36)) && (
+          <div style={{ padding: "0px 20px", width: width, height: height - 10, textAlign: "center", display: "flex", alignItems: 'center', justifyContent: 'center' }}>
+            <span>
+              You're missing the API KEY ID, you need to pass it to{" "}
+              <code>CotterProvider</code>
+            </span>
           </div>
         )}
+      <div
+        id={containerID}
+        style={{ width: width, height: (contextLoaded && (!apiKeyID || apiKeyID.length < 36)) ? 10 : height }}
+      >
       </div>
     </>
   );

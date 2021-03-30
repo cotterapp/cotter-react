@@ -63,11 +63,19 @@ function LoginForm({
   width = 300,
   height = 300,
 }: LoginFormOptions) {
+  const [contextLoaded, setcontextLoaded] = React.useState(false);
   const [loaded, setloaded] = React.useState(false);
   const [containerID, setcontainerID] = React.useState("");
   const { getCotter, apiKeyID, checkLoggedIn } = React.useContext(
     CotterContext
   );
+  // On some cases, apiKeyID from context is not immediately passed
+  // This timeout helps showing the error message only
+  // if the apiKeyID is for sure not set yet
+  React.useEffect(() => {
+    setTimeout(() => {setcontextLoaded(true)}, 1000) 
+  }, []);
+
   React.useEffect(() => {
     const randomID = Math.random().toString(36).substring(2, 15);
     setcontainerID(`cotter-form-container-${randomID}`);
@@ -134,16 +142,20 @@ function LoginForm({
   ]);
   return (
     <>
-      {(!apiKeyID || apiKeyID.length < 36) && (
-        <div style={{ padding: "0px 20px" }}>
-          You're missing the API KEY ID, you need to pass it to{" "}
-          <code>CotterProvider</code>
-        </div>
-      )}
+      
+      {(contextLoaded && (!apiKeyID || apiKeyID.length < 36)) && (
+          <div style={{ padding: "0px 20px", width: width, height: height - 10, textAlign: "center", display: "flex", alignItems: 'center', justifyContent: 'center' }}>
+            <span>
+              You're missing the API KEY ID, you need to pass it to{" "}
+              <code>CotterProvider</code>
+            </span>
+          </div>
+        )}
       <div
         id={containerID}
-        style={{ width: width, height: apiKeyID?.length >= 36 ? height : 10 }}
-      ></div>
+        style={{ width: width, height: (contextLoaded && (!apiKeyID || apiKeyID.length < 36)) ? 10 : height }}
+      >
+      </div>
     </>
   );
 }

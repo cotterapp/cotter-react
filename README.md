@@ -86,6 +86,8 @@ To use the `LoginForm` component, you can import `LoginForm` and do the followin
 />
 ```
 
+> To send successful form submission following your config in the dashboard, [follow this guide](https://docs.cotter.app/sdk-reference/web/sending-successful-form-submission)
+
 **`onBegin` function:**
 
 The `onBegin` function receives the user entered fields as a parameter. 
@@ -122,6 +124,8 @@ var payload = {
 
 When the user successfully login or sign up, the `onSuccess` function will receive a response from Cotter that includes the user-entered fields an a JWT token to validate the user successfully verified their email or phone number. 
 [Learn more about `onSuccess` function](https://docs.cotter.app/sdk-reference/web/web-sdk-verify-email-phone#step-3-sending-the-payload-to-your-backend-server)
+
+- **To send successful form submission** following your config in the dashboard, [follow this guide](https://docs.cotter.app/sdk-reference/web/sending-successful-form-submission)
 
 For example:
 ```javascript

@@ -25,7 +25,29 @@ var binder = require('cotter/lib/binder');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
+function _interopNamespace(e) {
+    if (e && e.__esModule) return e;
+    var n = Object.create(null);
+    if (e) {
+        Object.keys(e).forEach(function (k) {
+            if (k !== 'default') {
+                var d = Object.getOwnPropertyDescriptor(e, k);
+                Object.defineProperty(n, k, d.get ? d : {
+                    enumerable: true,
+                    get: function () {
+                        return e[k];
+                    }
+                });
+            }
+        });
+    }
+    n['default'] = e;
+    return Object.freeze(n);
+}
+
+var React__namespace = /*#__PURE__*/_interopNamespace(React);
 var Cotter__default = /*#__PURE__*/_interopDefaultLegacy(Cotter);
+var PropTypes__namespace = /*#__PURE__*/_interopNamespace(PropTypes);
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -125,9 +147,9 @@ var CotterContext = React.createContext(initialContext);
  */
 var CotterProvider = function (opts) {
     var children = opts.children, apiKeyID = opts.apiKeyID, backendURL = opts.backendURL, jsURL = opts.jsURL, assetURL = opts.assetURL;
-    var _a = React.useState(false), loggedIn = _a[0], setloggedIn = _a[1];
-    var _b = React.useState(true), loading = _b[0], setloading = _b[1];
-    var _c = React.useState(undefined), user = _c[0], setuser = _c[1];
+    var _a = React__namespace.useState(false), loggedIn = _a[0], setloggedIn = _a[1];
+    var _b = React__namespace.useState(true), loading = _b[0], setloading = _b[1];
+    var _c = React__namespace.useState(undefined), user = _c[0], setuser = _c[1];
     var getCotter = function (config) {
         if (config && config.ApiKeyID) {
             var c = new Cotter__default['default'](config);
@@ -138,23 +160,23 @@ var CotterProvider = function (opts) {
             return c;
         }
     };
-    React.useEffect(function () {
+    React__namespace.useEffect(function () {
         if (apiKeyID) {
             checkLoggedIn();
         }
     }, [apiKeyID]);
     // Update base url if needed
-    React.useEffect(function () {
+    React__namespace.useEffect(function () {
         if (backendURL) {
             Cotter.CotterEnum.BackendURL = backendURL;
         }
     }, [backendURL]);
-    React.useEffect(function () {
+    React__namespace.useEffect(function () {
         if (jsURL) {
             Cotter.CotterEnum.JSURL = jsURL;
         }
     }, [jsURL]);
-    React.useEffect(function () {
+    React__namespace.useEffect(function () {
         if (assetURL) {
             Cotter.CotterEnum.AssetURL = assetURL;
         }
@@ -216,7 +238,7 @@ var CotterProvider = function (opts) {
             }
         });
     }); };
-    return (React.createElement(CotterContext.Provider, { value: {
+    return (React__namespace.createElement(CotterContext.Provider, { value: {
             checkLoggedIn: checkLoggedIn,
             isLoggedIn: loggedIn,
             isLoading: typeof window === "undefined" || loading,
@@ -232,22 +254,22 @@ ___$insertStyle(".Cotter__loader-wrapper {\n  position: absolute;\n  top: 0;\n  
 
 function Loading(_a) {
     var loading = _a.loading;
-    return (React.createElement("div", { className: "Cotter__loader-wrapper " + (loading && "Cotter__is-active") },
-        React.createElement("div", { className: "Cotter__loader Cotter__is-loading" })));
+    return (React__namespace.createElement("div", { className: "Cotter__loader-wrapper " + (loading && "Cotter__is-active") },
+        React__namespace.createElement("div", { className: "Cotter__loader Cotter__is-loading" })));
 }
 
-var defaultLoadingComponent = function () { return React.createElement(Loading, { loading: true }); };
+var defaultLoadingComponent = function () { return React__namespace.createElement(Loading, { loading: true }); };
 var defaultLoginPagePath = "/";
 var withAuthenticationRequired = function (Component, options) { return function (props) {
-    var _a = React.useContext(CotterContext), isLoggedIn = _a.isLoggedIn, isLoading = _a.isLoading;
+    var _a = React__namespace.useContext(CotterContext), isLoggedIn = _a.isLoggedIn, isLoading = _a.isLoading;
     var _b = options.loginPagePath, loginPagePath = _b === void 0 ? defaultLoginPagePath : _b, _c = options.loadingComponent, loadingComponent = _c === void 0 ? defaultLoadingComponent : _c;
-    React.useEffect(function () {
+    React__namespace.useEffect(function () {
         if (!isLoading && !isLoggedIn) {
             window.location.href =
                 typeof loginPagePath === "function" ? loginPagePath() : loginPagePath;
         }
     }, [isLoggedIn, isLoading]);
-    return !isLoggedIn ? loadingComponent : React.createElement(Component, __assign({}, props));
+    return !isLoggedIn ? loadingComponent : React__namespace.createElement(Component, __assign({}, props));
 }; };
 
 /**
@@ -278,21 +300,21 @@ var withAuthenticationRequired = function (Component, options) { return function
  **/
 function LoginForm(_a) {
     var onBegin = _a.onBegin, onSuccess = _a.onSuccess, onError = _a.onError, styles = _a.styles, additionalFields = _a.additionalFields, formID = _a.formID, _b = _a.type, type = _b === void 0 ? binder.IDENTIFIER_TYPE.EMAIL : _b, _c = _a.authMethod, authMethod = _c === void 0 ? binder.AUTHENTICATION_METHOD.MAGIC_LINK : _c, _d = _a.width, width = _d === void 0 ? 300 : _d, _e = _a.height, height = _e === void 0 ? 300 : _e;
-    var _f = React.useState(false), contextLoaded = _f[0], setcontextLoaded = _f[1];
-    var _g = React.useState(false), loaded = _g[0], setloaded = _g[1];
-    var _h = React.useState(""), containerID = _h[0], setcontainerID = _h[1];
-    var _j = React.useContext(CotterContext), getCotter = _j.getCotter, apiKeyID = _j.apiKeyID, checkLoggedIn = _j.checkLoggedIn;
+    var _f = React__namespace.useState(false), contextLoaded = _f[0], setcontextLoaded = _f[1];
+    var _g = React__namespace.useState(false), loaded = _g[0], setloaded = _g[1];
+    var _h = React__namespace.useState(""), containerID = _h[0], setcontainerID = _h[1];
+    var _j = React__namespace.useContext(CotterContext), getCotter = _j.getCotter, apiKeyID = _j.apiKeyID, checkLoggedIn = _j.checkLoggedIn;
     // On some cases, apiKeyID from context is not immediately passed
     // This timeout helps showing the error message only
     // if the apiKeyID is for sure not set yet
-    React.useEffect(function () {
+    React__namespace.useEffect(function () {
         setTimeout(function () { setcontextLoaded(true); }, 1000);
     }, []);
-    React.useEffect(function () {
+    React__namespace.useEffect(function () {
         var randomID = Math.random().toString(36).substring(2, 15);
         setcontainerID("cotter-form-container-" + randomID);
     }, []);
-    React.useEffect(function () {
+    React__namespace.useEffect(function () {
         console.log(containerID);
         if (getCotter && (apiKeyID === null || apiKeyID === void 0 ? void 0 : apiKeyID.length) >= 36 && containerID && !loaded) {
             var config = {
@@ -345,17 +367,17 @@ function LoginForm(_a) {
         apiKeyID,
         checkLoggedIn,
     ]);
-    return (React.createElement(React.Fragment, null,
-        (contextLoaded && (!apiKeyID || apiKeyID.length < 36)) && (React.createElement("div", { style: { padding: "0px 20px", width: width, height: height - 10, textAlign: "center", display: "flex", alignItems: 'center', justifyContent: 'center' } },
-            React.createElement("span", null,
+    return (React__namespace.createElement(React__namespace.Fragment, null,
+        (contextLoaded && (!apiKeyID || apiKeyID.length < 36)) && (React__namespace.createElement("div", { style: { padding: "0px 20px", width: width, height: height - 10, textAlign: "center", display: "flex", alignItems: 'center', justifyContent: 'center' } },
+            React__namespace.createElement("span", null,
                 "You're missing the API KEY ID, you need to pass it to",
                 " ",
-                React.createElement("code", null, "CotterProvider")))),
-        React.createElement("div", { id: containerID, style: { width: width, height: (contextLoaded && (!apiKeyID || apiKeyID.length < 36)) ? 10 : height } })));
+                React__namespace.createElement("code", null, "CotterProvider")))),
+        React__namespace.createElement("div", { id: containerID, style: { width: width, height: (contextLoaded && (!apiKeyID || apiKeyID.length < 36)) ? 10 : height } })));
 }
 LoginForm.propTypes = {
-    onSuccess: PropTypes.func.isRequired,
-    onError: PropTypes.func.isRequired,
+    onSuccess: PropTypes__namespace.func.isRequired,
+    onError: PropTypes__namespace.func.isRequired,
 };
 
 exports.CotterContext = CotterContext;
